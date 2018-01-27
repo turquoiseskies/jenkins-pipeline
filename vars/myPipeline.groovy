@@ -10,7 +10,7 @@ def call() {
                stage('code-quality-check') {
                    steps {                         
                      withSonarQubeEnv('localSonar') {
-                       sh 'mvn sonar:sonar -Dsonar.host.url=http:172.17.0.2:9000 -Dsonar.login=c6eea290ca2ef147929dc78f402182570438a39f'
+                       sh 'mvn sonar:sonar -Dsonar.host.url=http:172.17.0.2:9000 -Dsonar.login=0854e56d829cf1b936ed8b21113d475decef2034'
                      } 
                    }
                }
