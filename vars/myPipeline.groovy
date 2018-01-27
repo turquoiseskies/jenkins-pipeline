@@ -26,6 +26,8 @@ def call() {
                                   }
                             }
                        }
+                     logstashSend failBuild: false, maxLines: 5000
+
                     }
              }
           }
