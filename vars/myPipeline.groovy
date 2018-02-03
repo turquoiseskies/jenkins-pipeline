@@ -33,6 +33,7 @@ def call() {
               stage("bake image") {
 
                   steps {
+                      sh "whoami"
                       script {
                           docker.withRegistry('https://registry:5000') {
 
