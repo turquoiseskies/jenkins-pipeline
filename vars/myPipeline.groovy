@@ -50,9 +50,7 @@ def call() {
               always {
                   logstashSend failBuild: false, maxLines: 5000
               }
-              failure {
-//                  mail to: team@example.com, subject: 'The Pipeline failed :('
-              }
+
           }
       }
  }
