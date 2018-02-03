@@ -26,7 +26,6 @@ def call() {
                                   }
                             }
                        }
-                     logstashSend failBuild: false, maxLines: 5000
 
                     }
              }
@@ -34,14 +33,25 @@ def call() {
               stage("bake image") {
 
                   steps {
-                      docker.withRegistry('https://registry:5000') {
+                      script {
+                          docker.withRegistry('https://registry:5000') {
 
-                          def customImage = docker.build("my-image:${env.BUILD_ID}")
+                              def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-                          /* Push the container to the custom Registry */
-                          customImage.push()
+                              /* Push the container to the custom Registry */
+                              customImage.push()
+                          }
                       }
                   }
+              }
+          }
+
+          post {
+              always {
+                  logstashSend failBuild: false, maxLines: 5000
+              }
+              failure {
+//                  mail to: team@example.com, subject: 'The Pipeline failed :('
               }
           }
       }
