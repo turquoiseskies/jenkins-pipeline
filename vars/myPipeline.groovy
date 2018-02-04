@@ -35,7 +35,7 @@ def call() {
                   steps {
                       sh "whoami"
                       script {
-                          docker.withRegistry('http://registry:5000') {
+                          docker.withRegistry('http://localhost:5000') {
 
                               def customImage = docker.build("my-image:${env.BUILD_ID}")
 
