@@ -10,7 +10,7 @@ def call() {
                stage('code-quality-check') {
                    steps {                         
                      withSonarQubeEnv('localSonar') {
-                       sh 'mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=b661e2cfc2dcb8600a5bee2fe1195c9ae9be1c70'
+                       sh 'mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=8465fafd1be292f86c73376249213d0ce313f359'
                      } 
                    }
                }
@@ -35,7 +35,7 @@ def call() {
                   steps {
                       sh "whoami"
                       script {
-                          docker.withRegistry('http://registry:5000') {
+                          docker.withRegistry('http://localhost:5000') {
 
                               def customImage = docker.build("my-image:${env.BUILD_ID}")
 
