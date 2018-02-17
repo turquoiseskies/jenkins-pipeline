@@ -49,7 +49,7 @@ def call() {
 
           post {
               always {
-                  logstashSend failBuild: false, maxLines: 5000
+                  logstashSend failBuild: false, maxLines: 20000
               }
 
           }
